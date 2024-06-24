@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+
 </head>
 
 <body>
@@ -41,6 +42,7 @@
 
 <!--main/custom js-->
 <script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/messenger.js') }}"></script>
 
 </body>
 
