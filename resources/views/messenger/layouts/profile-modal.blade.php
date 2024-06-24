@@ -2,14 +2,13 @@
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form action="#" class="profile-form">
-                @csrf
             <div class="modal-body">
-
+                <form action="#" class="profile-form" enctype="multipart/form-data">
+                    @csrf
                     <div class="file profile-file">
-                        <img src="{{ auth()->user()->avatar }}" alt="Upload" class="img-fluid profile-image-preview">
+                        <img src="{{ asset(auth()->user()->avatar) }}" alt="Upload" class="img-fluid profile-image-preview">
                         <label for="select_file"><i class="fal fa-camera-alt"></i></label>
-                        <input id="select_file" type="file" hidden>
+                        <input id="select_file" type="file" hidden name="avatar">
                     </div>
                     <p>Edit information</p>
                     <input type="text" placeholder="Name" value="{{ auth()->user()->name }}" name="name">
@@ -27,18 +26,17 @@
                             <input type="password" placeholder="Confirm Password" name="password_confirmation">
                         </div>
                     </div>
+                    <div class="modal-footer p-0 mt-3">
+                        <button type="button" class="btn btn-secondary cancel"
+                                data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary save profile-save">Save changes</button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary cancel"
-                        data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary save profile-save">Save changes</button>
-            </div>
-            </form>
 
         </div>
     </div>
 </div>
-
 @push('scripts')
     <script>
         $(document).ready(function() {
@@ -76,4 +74,4 @@
             })
         })
     </script>
-    @endpush
+@endpush

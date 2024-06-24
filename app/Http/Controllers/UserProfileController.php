@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\FileUploadTrait;
+
 
 
 class UserProfileController extends Controller
 {
+    use FileUploadTrait;
+
+
     function update(Request $request) {
         $request->validate([
             'avatar' => ['nullable', 'image', 'max:500'],
@@ -31,6 +37,8 @@ class UserProfileController extends Controller
             $user->password = bcrypt($request->password);
         }
         $user->save();
+        notyf()->addSuccess('Updated Successfully.');
+
         return response(['message' => 'Updated Successfully!'], 200);
 
     }
