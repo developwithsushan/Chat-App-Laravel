@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -12,11 +11,10 @@
     <link rel="stylesheet" href="{{ asset('css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('css/venobox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/emojionearea.min.css') }}">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <link rel="stylesheet" href="{{ asset('css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-
 </head>
 
 <body>
@@ -39,11 +37,16 @@
 <script src="{{ asset('js/slick.min.js') }}"></script>
 <script src="{{ asset('js/venobox.min.js') }}"></script>
 <script src="{{ asset('js/emojionearea.min.js') }}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
 <!--main/custom js-->
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/messenger.js') }}"></script>
-
+<script>
+    var notyf = new Notyf({
+        duration: 5000
+    });
+</script>
+@stack('scripts')
 </body>
 
 </html>
