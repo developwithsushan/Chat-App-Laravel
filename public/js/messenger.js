@@ -16,6 +16,19 @@ function imagePreview(input, selector) {
     }
 }
 
+function searchUsers(query){
+    $.ajax({
+        method: "GET",
+        url: '/messenger/search',
+        data: {query:query},
+        success: function (data){
+
+        }, error : function (xhr, status, error){
+
+        }
+    })
+}
+
 
 /**
  * -----------------------------------
