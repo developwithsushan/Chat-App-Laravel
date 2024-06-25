@@ -7,7 +7,6 @@
         <span class="setting" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="fas fa-user-cog"></i>
                 </span>
-se
         @include('messenger.layouts.profile-modal')
     </div>
 
