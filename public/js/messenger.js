@@ -29,6 +29,16 @@ function searchUsers(query){
     })
 }
 
+function debounce(callback, delay) {
+    let timerId;
+    return function (...args) {
+        clearTimeout(timerId);
+        timerId = setTimeout(() => {
+            callback.apply(this, args);
+        }, delay)
+    }
+}
+
 
 /**
  * -----------------------------------
@@ -42,8 +52,16 @@ $(document).ready(function () {
     });
 
 
+    /** Search Action on Keyup */
+    const debouncedSearch = debounce(function () {
+        const value = $('.user_search').val();
+        searchUsers(value);
+    }, 500);
+
     $('.user_search').on('keyup', function () {
         let query = $(this).val();
-        searchUsers(query);
+        if (query.length > 0) {
+            debouncedSearch();
+        }
     })
 });
