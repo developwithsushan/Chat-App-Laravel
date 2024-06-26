@@ -119,4 +119,9 @@ $(document).ready(function () {
 
     })
 
+    // click action for messenger list item
+    $("body").on("click", ".messenger-list-item", function (){
+        const dataId = $(this).attr("data-id");
+    });
+
 });
