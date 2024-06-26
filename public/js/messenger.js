@@ -86,6 +86,31 @@ function debounce(callback, delay) {
     }
 }
 
+/**
+ * -----------------------------------
+ * Fecth ID data of user and update the view
+ * -----------------------------------
+ */
+
+function IDinfo(id){
+    $.ajax({
+        method: 'GET',
+        url: '/messenger/id-info',
+        data: {id:id},
+        success: function (data){
+            $(".messenger-header").find("img").attr("src", data.fetch.avatar);
+            $(".messenger-header").find("h4").text(data.fetch.name);
+            $(".messenger-info-view .user_photo").find("img").attr("src", data.fetch.avatar);
+            $(".messenger-info-view").find(".user_name").text(data.fetch.name);
+            $(".messenger-info-view").find(".user_unique_name").text(data.fetch.user_name);
+
+        }, error: function (xhr, status, error){
+
+        }
+    })
+}
+
+
 
 /**
  * -----------------------------------
@@ -122,6 +147,7 @@ $(document).ready(function () {
     // click action for messenger list item
     $("body").on("click", ".messenger-list-item", function (){
         const dataId = $(this).attr("data-id");
+        IDinfo(dataId);
     });
 
 });

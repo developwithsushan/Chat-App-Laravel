@@ -37,4 +37,14 @@ class MessengerController extends Controller
         ]);
     }
 
+
+    // fetch user by id
+    function fetchIdInfo(Request $request)
+    {
+        $fetch = User::where('id', $request['id'])->first();
+        return response()->json([
+            'fetch' => $fetch
+        ]);
+    }
+
 }
