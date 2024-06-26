@@ -3,8 +3,6 @@
     <div class="user_search_result">
         <div class="wsus__user_list_area_height user_search_list_result">
 
-
-
         </div>
     </div>
 </form>
