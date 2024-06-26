@@ -29,6 +29,18 @@ function searchUsers(query){
     })
 }
 
+function actionOnScroll(selector, callback, topScroll = false) {
+    $(selector).on('scroll', function () {
+        let element = $(this).get(0);
+        const condition = topScroll ? element.scrollTop == 0 :
+            element.scrollTop + element.clientHeight >= element.scrollHeight;
+
+        if (condition) {
+            callback();
+        }
+    })
+}
+
 function debounce(callback, delay) {
     let timerId;
     return function (...args) {
@@ -64,4 +76,12 @@ $(document).ready(function () {
             debouncedSearch();
         }
     })
+
+    // search pagination
+    actionOnScroll(".user_search_list_result", function () {
+        let value = $('.user_search').val();
+        searchUsers(value);
+
+    })
+
 });
