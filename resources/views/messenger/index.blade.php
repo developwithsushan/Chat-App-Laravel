@@ -44,8 +44,6 @@
                 </div>
 
 
-
-
                 <div class="wsus__single_chat_area">
                     <div class="wsus__single_chat">
                         <p class="messages">You can give a photo ?</p>
@@ -56,9 +54,6 @@
                         <a class="action" href="#"><i class="fas fa-trash"></i></a>
                     </div>
                 </div>
-
-
-
 
                 <div class="wsus__single_chat_area">
                     <div class="wsus__single_chat chat_right">

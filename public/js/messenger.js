@@ -4,6 +4,14 @@
  *
  */
 
+function enableChatBoxLoader(){
+$(".wsus__message_paceholder").removeClass('d-none');
+}
+
+function disableChatBoxLoader(){
+    $(".wsus__message_paceholder").addClass('d-none');
+}
+
 function imagePreview(input, selector) {
     if (input.files && input.files[0]) {
         var render = new FileReader();
@@ -97,15 +105,20 @@ function IDinfo(id){
         method: 'GET',
         url: '/messenger/id-info',
         data: {id:id},
+        beforeSend: function (){
+            NProgress.start();
+            enableChatBoxLoader();
+        },
         success: function (data){
             $(".messenger-header").find("img").attr("src", data.fetch.avatar);
             $(".messenger-header").find("h4").text(data.fetch.name);
             $(".messenger-info-view .user_photo").find("img").attr("src", data.fetch.avatar);
             $(".messenger-info-view").find(".user_name").text(data.fetch.name);
             $(".messenger-info-view").find(".user_unique_name").text(data.fetch.user_name);
-
+            NProgress.done();
+            disableChatBoxLoader();
         }, error: function (xhr, status, error){
-
+            disableChatBoxLoader();
         }
     })
 }
