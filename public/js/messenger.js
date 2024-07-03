@@ -167,6 +167,8 @@ function sendMessage(){
             beforeSend: function (){
                 // add temp message on dom
                 messageBoxContainer.append(sendTempMessageCard(inputValue, tempID));
+                messageForm.trigger("reset");
+                $(".emojionearea-editor").text("");
             },
             success: function (data){
 
@@ -182,7 +184,7 @@ function sendTempMessageCard(message, tempId){
     <div class="wsus__single_chat_area">
                     <div class="wsus__single_chat chat_right" data-id="${tempId}">
                         <p class="messages">${message}</p>
-                        <span class="far fa-clock"> Now</span>
+                       <span class="clock"><i class="fas fa-clock"></i> 5h ago</span>
                         <a class="action" href="#"><i class="fas fa-trash"></i></a>
                     </div>
                 </div> `
