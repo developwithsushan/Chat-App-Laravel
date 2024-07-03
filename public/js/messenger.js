@@ -7,8 +7,9 @@
  var temporaryMsgId = 0;
 
 const messageForm = $(".message-form"),
-    messageInput = $(".message-input");
-
+    messageInput = $(".message-input"),
+    messageBoxContainer = $(".wsus__chat_area_body"),
+    csrf_token = $("meta[name=csrf_token]").attr("content");
 
 
 const getMessengerId = () => $("meta[name=id]").attr("content");
@@ -149,8 +150,42 @@ function sendMessage(){
     let tempID = `temp_${temporaryMsgId}`;
     const inputValue = messageInput.val();
     if (inputValue.length > 0){
+
+        const formData = new FormData($(".message-form")[0]);
+        formData.append("id", getMessengerId());
+        formData.append("temporaryMsgId", tempID);
+        formData.append("_token", csrf_token);
+
         // Ajax
+        $.ajax({
+            method: 'POST',
+            url: "/messenger/send-message",
+            data: formData,
+            dataType: "JSON",
+            processData: false,
+            contentType: false,
+            beforeSend: function (){
+                // add temp message on dom
+                messageBoxContainer.append(sendTempMessageCard(inputValue, tempID));
+            },
+            success: function (data){
+
+            }, error: function (xhr, status, error){
+
+            }
+        })
     }
+}
+
+function sendTempMessageCard(message, tempId){
+    return `
+    <div class="wsus__single_chat_area">
+                    <div class="wsus__single_chat chat_right" data-id="${tempId}">
+                        <p class="messages">${message}</p>
+                        <span class="far fa-clock"> Now</span>
+                        <a class="action" href="#"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div> `
 }
 
 

@@ -47,4 +47,9 @@ class MessengerController extends Controller
         ]);
     }
 
+    // send message
+    public function sendMessage(Request $request){
+        dd($request->all());
+    }
+
 }
