@@ -83,7 +83,7 @@
                             <label for="file"><i class="far fa-plus"></i></label>
                             <input id="file" type="file" hidden>
                         </div>
-                        <textarea id="example1" rows="1" placeholder="Type a message.." class="message-input"></textarea>
+                        <textarea id="message" name="message" rows="1" placeholder="Type a message.." class="message-input"></textarea>
                         <button type="submit"><i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>

@@ -64,7 +64,7 @@ class MessengerController extends Controller
 
         return response()->json([
             'message' => $this->messageCard($message),
-            'tempId' => $request->temporaryMsdId
+            'tempID' => $request->temporaryMsdId
         ]);
     }
 
