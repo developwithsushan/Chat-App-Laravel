@@ -192,6 +192,14 @@ function sendTempMessageCard(message, tempId){
                 </div> `
 }
 
+function messageFormReset(){
+    $('.attachment-block').addClass('d-none');
+    $(".emojionearea-editor").text("");
+    messageForm.trigger("reset");
+}
+
+
+
 
 /**
  * -----------------------------------
@@ -200,6 +208,7 @@ function sendTempMessageCard(message, tempId){
  */
 
 $(document).ready(function () {
+
     $('#select_file').change(function () {
         imagePreview(this, '.profile-image-preview')
     });
@@ -238,5 +247,14 @@ $(document).ready(function () {
         sendMessage();
     });
 
+    // send attachment
+    $('.attachment-input').change(function () {
+        imagePreview(this, '.attachment-preview');
+        $('.attachment-block').removeClass('d-none');
+    });
+
+    $(".cancel-attachment").on("click", function (){
+        messageFormReset();
+    })
 
 });
