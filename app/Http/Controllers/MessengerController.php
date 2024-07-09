@@ -55,17 +55,18 @@ class MessengerController extends Controller
             'id' => ['required', 'integer'],
             'temporaryMsgId' => ['required'],
         ]);
-        // STORES THE MESSAGE IN DB
-        $message = new Message();
-        $message->from_id = Auth::user()->id;
-        $message->to_id = $request->id;
-        $message->body = $request->message;
-        $message->save();
 
-        return response()->json([
-            'message' => $this->messageCard($message),
-            'tempID' => $request->temporaryMsdId
-        ]);
+        // STORES THE MESSAGE IN DB
+//        $message = new Message();
+//        $message->from_id = Auth::user()->id;
+//        $message->to_id = $request->id;
+//        $message->body = $request->message;
+//        $message->save();
+
+//        return response()->json([
+//            'message' => $this->messageCard($message),
+//            'tempID' => $request->temporaryMsdId
+//        ]);
     }
 
     function messageCard($message){
